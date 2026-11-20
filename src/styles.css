@@ -1,16 +1,43 @@
+@import '@digital-go-jp/design-tokens/dist/tokens-simple.css';
+
+/* 役割ごとに公式の色を割り当て、文字と背景をテーマ単位で切り替える。 */
 :root {
   font-family: 'DM Sans', 'Noto Sans JP', sans-serif;
-  color: #26334a;
-  background: #f7f9fc;
+  --bg: var(--color-neutral-solid-gray-50);
+  --paper: var(--color-neutral-white);
+  --text: var(--color-neutral-solid-gray-900);
+  --muted: var(--color-neutral-solid-gray-700);
+  --border: var(--color-neutral-solid-gray-200);
+  --control-border: var(--color-neutral-solid-gray-536);
+  --blue: var(--color-primitive-blue-900);
+  --blue-light: var(--color-primitive-blue-50);
+  --green: var(--color-primitive-green-900);
+  --green-light: var(--color-primitive-green-50);
+  --purple: var(--color-primitive-purple-900);
+  --purple-light: var(--color-primitive-purple-50);
+  --orange: var(--color-primitive-orange-1000);
+  --orange-light: var(--color-primitive-orange-50);
+  --gold: var(--color-primitive-yellow-1000);
+  color: var(--text);
+  background: var(--bg);
   font-synthesis: none;
-  --bg: #f7f9fc;
-  --paper: #fff;
-  --text: #26334a;
-  --muted: #8993a5;
-  --border: #e7ebf2;
-  --blue: #315bc5;
-  --blue-light: #edf3ff;
-  --banner: #edf3ff;
+}
+[data-theme='dark'] {
+  --bg: var(--color-neutral-solid-gray-900);
+  --paper: var(--color-neutral-solid-gray-800);
+  --text: var(--color-neutral-white);
+  --muted: var(--color-neutral-solid-gray-100);
+  --border: var(--color-neutral-solid-gray-600);
+  --control-border: var(--color-neutral-solid-gray-300);
+  --blue: var(--color-primitive-blue-200);
+  --blue-light: var(--color-primitive-light-blue-1200);
+  --green: var(--color-primitive-green-200);
+  --green-light: var(--color-primitive-green-1100);
+  --purple: var(--color-primitive-purple-200);
+  --purple-light: var(--color-primitive-purple-1100);
+  --orange: var(--color-primitive-orange-200);
+  --orange-light: var(--color-primitive-orange-1100);
+  --gold: var(--color-primitive-yellow-300);
 }
 * {
   box-sizing: border-box;
@@ -32,7 +59,7 @@ a {
 }
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid #82a6ff;
+  outline: 3px solid var(--blue);
   outline-offset: 3px;
 }
 button {
@@ -62,7 +89,7 @@ button:not(.MuiButtonBase-root) {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 1.5625rem;
   font-weight: 700;
   letter-spacing: -0.9px;
   padding: 0 6px;
@@ -71,10 +98,10 @@ button:not(.MuiButtonBase-root) {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--color-neutral-white);
   width: 38px;
   height: 42px;
-  background: #315bc5;
+  background: var(--color-primitive-blue-900);
   border-radius: 10px;
 }
 .brand-icon svg {
@@ -82,14 +109,14 @@ button:not(.MuiButtonBase-root) {
 }
 .brand-caption {
   display: block;
-  font-size: 8px;
+  font-size: 0.75rem;
   letter-spacing: 1.4px;
   font-weight: 600;
   color: var(--muted);
   margin-top: 2px;
 }
 .workspace-label {
-  font-size: 9px;
+  font-size: 0.75rem;
   letter-spacing: 1.5px;
   font-weight: 600;
   color: var(--muted);
@@ -105,9 +132,9 @@ button:not(.MuiButtonBase-root) {
   margin-bottom: 7px;
   background: transparent;
   border-radius: 7px;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 500;
-  color: #69768b;
+  color: var(--muted);
   white-space: nowrap;
 }
 .nav-item svg {
@@ -121,21 +148,21 @@ button:not(.MuiButtonBase-root) {
 .nav-count {
   margin-left: auto;
   font-family: 'DM Sans', sans-serif;
-  font-size: 10px;
+  font-size: 0.875rem;
   background: var(--bg);
   padding: 2px 7px;
   border-radius: 4px;
 }
 .active .nav-count {
-  background: #dce7ff;
-  color: #315bc5;
+  background: var(--blue-light);
+  color: var(--blue);
 }
 .sidebar-section-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 0.875rem;
   margin: 35px 12px 12px;
 }
 .sidebar-section-title svg {
@@ -153,9 +180,9 @@ button:not(.MuiButtonBase-root) {
   width: 100%;
   padding: 11px 9px;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 1rem;
   text-align: left;
-  color: #6d788d;
+  color: var(--muted);
 }
 .sidebar-tags button:hover,
 .sidebar-tags .selected-tag {
@@ -163,23 +190,23 @@ button:not(.MuiButtonBase-root) {
 }
 .sidebar-tags small {
   margin-left: auto;
-  color: #9ba4b3;
-  font-size: 10px;
+  color: var(--muted);
+  font-size: 0.875rem;
 }
 .tag-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #7c9be9;
+  background: var(--blue);
 }
 .tag-dot.green {
-  background: #68ac98;
+  background: var(--green);
 }
 .tag-dot.purple {
-  background: #aa92d4;
+  background: var(--purple);
 }
 .tag-dot.orange {
-  background: #d6a47c;
+  background: var(--orange);
 }
 .sidebar-bottom {
   margin-top: auto;
@@ -189,7 +216,7 @@ button:not(.MuiButtonBase-root) {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 11px;
+  font-size: 0.875rem;
   font-weight: 500;
 }
 .status-dot {
@@ -197,10 +224,10 @@ button:not(.MuiButtonBase-root) {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #5aa58e;
+  background: var(--green);
 }
 .sidebar-bottom p {
-  font-size: 9px;
+  font-size: 0.75rem;
   color: var(--muted);
   margin: 10px 0 24px;
   white-space: nowrap;
@@ -212,16 +239,16 @@ button:not(.MuiButtonBase-root) {
   gap: 9px;
   padding: 20px 0 0;
   background: transparent;
-  font-size: 11px;
+  font-size: 0.875rem;
   width: 100%;
-  color: #768196;
+  color: var(--muted);
 }
 .theme-button > svg {
   font-size: 18px;
 }
 .switch {
   margin-left: auto;
-  background: #e4e9f1;
+  background: var(--control-border);
   padding: 3px;
   border-radius: 20px;
   width: 29px;
@@ -231,12 +258,12 @@ button:not(.MuiButtonBase-root) {
   width: 11px;
   height: 11px;
   display: block;
-  background: #fff;
+  background: var(--color-neutral-white);
   border-radius: 50%;
-  box-shadow: 0 1px 3px #0002;
+  box-shadow: 0 1px 3px var(--color-neutral-opacity-gray-100);
 }
 .switch.on {
-  background: #315bc5;
+  background: var(--color-primitive-blue-900);
 }
 .switch.on i {
   margin-left: 12px;
@@ -257,15 +284,15 @@ button:not(.MuiButtonBase-root) {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 11px;
+  font-size: 0.875rem;
   color: var(--muted);
 }
 .breadcrumb > svg {
   font-size: 15px;
-  color: #a9b2c1;
+  color: var(--muted);
 }
 .breadcrumb strong {
-  color: #5c6880;
+  color: var(--muted);
   font-weight: 500;
 }
 .topbar-right {
@@ -280,20 +307,20 @@ button:not(.MuiButtonBase-root) {
   border: 1px solid var(--border);
   padding: 6px 10px;
   border-radius: 5px;
-  font-size: 10px;
-  color: #7a8597;
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 .avatar {
   height: 31px;
   width: 31px;
-  background: #eef1f7;
+  background: var(--blue-light);
   border: 3px solid var(--paper);
   outline: 1px solid var(--border);
   display: grid;
   place-items: center;
   border-radius: 50%;
-  color: #6d7c99;
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 1rem;
   font-weight: 600;
 }
 .page-content {
@@ -309,13 +336,13 @@ button:not(.MuiButtonBase-root) {
   margin-bottom: 30px;
 }
 .eyebrow {
-  font-size: 9px;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 1.8px;
-  color: #8390a7;
+  color: var(--muted);
 }
 .page-heading h1 {
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: 1px;
   margin: 10px 0 12px;
@@ -324,23 +351,23 @@ button:not(.MuiButtonBase-root) {
   gap: 13px;
 }
 .heading-count {
-  background: #e9edf5;
+  background: var(--blue-light);
   font-family: 'DM Sans', sans-serif;
-  color: #72809b;
-  font-size: 12px;
+  color: var(--muted);
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0;
   border-radius: 5px;
   padding: 3px 8px;
 }
 .page-heading p {
-  color: #8290a3;
-  font-size: 11px;
+  color: var(--muted);
+  font-size: 1rem;
   margin: 0;
   line-height: 1.8;
 }
 .upload-button.MuiButton-root {
-  font-size: 11px;
+  font-size: 0.875rem;
   padding: 11px 18px;
   white-space: nowrap;
   border-radius: 6px;
@@ -349,21 +376,21 @@ button:not(.MuiButtonBase-root) {
   font-size: 19px;
 }
 .welcome-banner {
-  height: 215px;
+  min-height: 215px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--banner);
-  border: 1px solid #e1e9fb;
+  background: var(--blue-light);
+  border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
   padding: 30px 34px;
 }
 .banner-label {
-  font-size: 8px;
+  font-size: 0.75rem;
   letter-spacing: 1.7px;
-  color: #6481ba;
+  color: var(--blue);
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -373,19 +400,19 @@ button:not(.MuiButtonBase-root) {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #638ad4;
+  background: var(--blue);
 }
 .banner-text h2 {
-  font-size: 20px;
+  font-size: 1.25rem;
   letter-spacing: 0.7px;
   margin: 14px 0 9px;
   font-weight: 600;
-  color: #2b487c;
+  color: var(--text);
 }
 .banner-text p {
-  font-size: 11px;
+  font-size: 1rem;
   line-height: 1.9;
-  color: #7a8daa;
+  color: var(--muted);
   margin: 0;
 }
 .banner-text > button {
@@ -393,8 +420,8 @@ button:not(.MuiButtonBase-root) {
   gap: 10px;
   align-items: center;
   background: transparent;
-  color: #4067b3;
-  font-size: 10px;
+  color: var(--blue);
+  font-size: 0.875rem;
   padding: 0;
   margin-top: 17px;
   font-weight: 500;
@@ -411,7 +438,7 @@ button:not(.MuiButtonBase-root) {
 }
 .orbit {
   position: absolute;
-  border: 1px solid #dce6fa;
+  border: 1px solid var(--border);
   border-radius: 50%;
   width: 190px;
   height: 190px;
@@ -428,42 +455,42 @@ button:not(.MuiButtonBase-root) {
   position: absolute;
   left: 95px;
   top: 30px;
-  border: 1px solid #c6d5f4;
+  border: 1px solid var(--color-primitive-blue-300);
   width: 112px;
   height: 145px;
   border-radius: 8px;
-  background: #fff;
+  background: var(--color-neutral-white);
   transform: rotate(9deg);
 }
 .paper-back {
   left: 111px;
   top: 25px;
   transform: rotate(21deg);
-  background: #d8e5fd;
-  border-color: #c4d6fa;
+  background: var(--color-primitive-blue-100);
+  border-color: var(--color-primitive-blue-300);
 }
 .paper-front {
   padding: 24px 20px;
-  box-shadow: 0 9px 22px #4c6ca615;
+  box-shadow: 0 9px 22px var(--color-neutral-opacity-gray-100);
   transform: rotate(-9deg);
 }
 .paper-md {
-  font-size: 31px;
+  font-size: 1.9375rem;
   line-height: 34px;
   font-weight: 700;
   letter-spacing: -3px;
-  color: #5277c9;
+  color: var(--color-primitive-blue-900);
   font-family: monospace;
   margin-bottom: 16px;
   white-space: nowrap;
 }
 .paper-md span {
   margin-left: 5px;
-  font-size: 36px;
+  font-size: 2.25rem;
 }
 .paper-line {
   height: 4px;
-  background: #e0e8f8;
+  background: var(--color-primitive-blue-100);
   border-radius: 3px;
   margin-top: 7px;
   width: 55px;
@@ -478,9 +505,9 @@ button:not(.MuiButtonBase-root) {
   position: absolute;
   bottom: 10px;
   right: -17px;
-  background: #fff;
-  border: 4px solid var(--banner);
-  color: #4f7bd5;
+  background: var(--color-neutral-white);
+  border: 4px solid var(--blue-light);
+  color: var(--color-primitive-blue-900);
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -495,17 +522,17 @@ button:not(.MuiButtonBase-root) {
   top: 54px;
   right: 30px;
   transform: rotate(9deg);
-  background: #fff;
+  background: var(--color-neutral-white);
   padding: 5px 10px;
-  color: #7895cb;
-  font-size: 12px;
-  border: 1px solid #d9e3f7;
+  color: var(--color-primitive-blue-900);
+  font-size: 1rem;
+  border: 1px solid var(--color-primitive-blue-300);
   border-radius: 5px;
 }
 .art-plus {
   position: absolute;
-  color: #9fb8e7;
-  font-size: 18px;
+  color: var(--color-primitive-blue-300);
+  font-size: 1.125rem;
   font-weight: 400;
 }
 .plus-one {
@@ -533,8 +560,8 @@ button:not(.MuiButtonBase-root) {
 .library-tabs > button {
   height: 100%;
   background: transparent;
-  color: #7a879a;
-  font-size: 11px;
+  color: var(--muted);
+  font-size: 0.875rem;
   font-weight: 500;
   position: relative;
   padding: 0 3px 13px;
@@ -553,7 +580,7 @@ button:not(.MuiButtonBase-root) {
 }
 .library-tabs > button > span {
   margin-left: 7px;
-  font-size: 10px;
+  font-size: 0.875rem;
   padding: 1px 6px;
   border-radius: 4px;
   background: var(--blue-light);
@@ -561,8 +588,8 @@ button:not(.MuiButtonBase-root) {
   font-family: 'DM Sans', sans-serif;
 }
 .library-caption {
-  font-size: 9px;
-  color: #9aa4b5;
+  font-size: 0.75rem;
+  color: var(--muted);
   padding-bottom: 10px;
 }
 .filters {
@@ -576,16 +603,16 @@ button:not(.MuiButtonBase-root) {
 }
 .search-field .MuiOutlinedInput-root {
   height: 39px;
-  font-size: 11px;
+  font-size: 0.875rem;
   background: var(--paper);
   border-radius: 6px;
 }
 .search-field fieldset,
 .filters fieldset {
-  border-color: var(--border);
+  border-color: var(--control-border);
 }
 .search-icon {
-  color: #95a1b6;
+  color: var(--muted);
   font-size: 18px !important;
   margin-right: 9px;
 }
@@ -595,7 +622,7 @@ button:not(.MuiButtonBase-root) {
   align-items: center;
 }
 .filter-right > .MuiInputBase-root {
-  font-size: 10px;
+  font-size: 0.875rem;
   height: 39px;
   background: var(--paper);
   border-radius: 6px;
@@ -615,15 +642,15 @@ button:not(.MuiButtonBase-root) {
 .layout-toggle .MuiIconButton-root {
   border-radius: 4px;
   padding: 5px;
-  color: #9aa6b9;
+  color: var(--muted);
 }
 .layout-toggle .active.MuiIconButton-root {
   background: var(--blue-light);
   color: var(--blue);
 }
 .results-label {
-  font-size: 10px;
-  color: #8e99ac;
+  font-size: 0.875rem;
+  color: var(--muted);
   margin: 19px 0 14px;
 }
 .document-grid {
@@ -642,8 +669,8 @@ button:not(.MuiButtonBase-root) {
     transform 0.2s;
 }
 .doc-card:hover {
-  border-color: #b9caeb;
-  box-shadow: 0 5px 20px #19396308;
+  border-color: var(--control-border);
+  box-shadow: 0 5px 20px var(--color-neutral-opacity-gray-50);
   transform: translateY(-2px);
 }
 .card-top {
@@ -655,9 +682,9 @@ button:not(.MuiButtonBase-root) {
 .document-icon {
   width: 34px;
   height: 37px;
-  background: #edf3ff;
+  background: var(--blue-light);
   border-radius: 7px;
-  color: #6f91d7;
+  color: var(--blue);
   display: grid;
   place-items: center;
 }
@@ -665,29 +692,29 @@ button:not(.MuiButtonBase-root) {
   font-size: 22px;
 }
 .document-icon.green {
-  background: #edf7f3;
-  color: #72a990;
+  background: var(--green-light);
+  color: var(--green);
 }
 .document-icon.purple {
-  background: #f4f0fa;
-  color: #a28ac9;
+  background: var(--purple-light);
+  color: var(--purple);
 }
 .document-icon.orange {
-  background: #fbf4ed;
-  color: #cc9f7a;
+  background: var(--orange-light);
+  color: var(--orange);
 }
 .file-type {
-  color: #a3adbd;
+  color: var(--muted);
   letter-spacing: 1.2px;
-  font-size: 8px;
+  font-size: 0.75rem;
   font-weight: 500;
 }
 .card-top > .MuiIconButton-root {
   margin-left: auto;
-  color: #b5becb;
+  color: var(--muted);
 }
 .gold {
-  color: #d4a540;
+  color: var(--gold);
 }
 .card-content {
   background: transparent;
@@ -697,7 +724,7 @@ button:not(.MuiButtonBase-root) {
   padding: 15px 20px 0;
 }
 .card-content h3 {
-  font-size: 13px;
+  font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.7;
   margin: 0 0 9px;
@@ -708,8 +735,8 @@ button:not(.MuiButtonBase-root) {
 }
 .card-content p {
   margin: 0;
-  color: #8a96a9;
-  font-size: 10px;
+  color: var(--muted);
+  font-size: 1rem;
   line-height: 1.9;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -725,24 +752,24 @@ button:not(.MuiButtonBase-root) {
   min-height: 20px;
 }
 .tag-pill {
-  font-size: 9px;
+  font-size: 0.75rem;
   padding: 3px 8px;
   border-radius: 4px;
-  color: #6583ba;
-  background: #eff4fc;
+  color: var(--blue);
+  background: var(--blue-light);
   line-height: 1.6;
 }
 .tag-pill.green {
-  background: #edf6f1;
-  color: #6d9c83;
+  background: var(--green-light);
+  color: var(--green);
 }
 .tag-pill.purple {
-  background: #f3eff9;
-  color: #9b83bd;
+  background: var(--purple-light);
+  color: var(--purple);
 }
 .tag-pill.orange {
-  background: #fbf3e9;
-  color: #b29772;
+  background: var(--orange-light);
+  color: var(--orange);
 }
 .card-footer {
   margin: 0 20px;
@@ -751,18 +778,18 @@ button:not(.MuiButtonBase-root) {
   align-items: center;
   gap: 7px;
   min-height: 44px;
-  color: #9ba5b6;
+  color: var(--muted);
   font-family: 'DM Sans', sans-serif;
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .document-id {
   margin-left: auto;
-  font-size: 9px;
+  font-size: 0.75rem;
   letter-spacing: 0.6px;
 }
 .card-footer .MuiIconButton-root {
   padding: 4px;
-  color: #a5b0c1;
+  color: var(--muted);
   margin-right: -4px;
 }
 .card-footer svg {
@@ -773,18 +800,18 @@ button:not(.MuiButtonBase-root) {
   align-items: center;
   justify-content: space-between;
   margin: 24px 0 29px;
-  font-size: 10px;
-  color: #8f9caf;
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 .pagination-row .MuiPaginationItem-root {
-  font-size: 11px;
+  font-size: 0.875rem;
   min-width: 28px;
   height: 28px;
   border-radius: 5px;
 }
-.pagination-row .Mui-selected {
-  background: #315bc5 !important;
-  color: #fff;
+.pagination-row .MuiPaginationItem-root.Mui-selected {
+  background: var(--color-primitive-blue-900) !important;
+  color: var(--color-neutral-white);
 }
 .library-tip {
   display: flex;
@@ -793,7 +820,7 @@ button:not(.MuiButtonBase-root) {
   border: 1px solid var(--border);
   border-radius: 7px;
   padding: 13px 16px;
-  color: #909bb0;
+  color: var(--muted);
   background: var(--paper);
 }
 .tip-icon {
@@ -802,38 +829,38 @@ button:not(.MuiButtonBase-root) {
   width: 27px;
   height: 27px;
   flex-shrink: 0;
-  background: #f1f4f9;
+  background: var(--blue-light);
   border-radius: 6px;
-  color: #8a9bb9;
+  color: var(--muted);
 }
 .library-tip p {
-  font-size: 9px;
+  font-size: 0.75rem;
   line-height: 1.8;
   margin: 0;
 }
 .library-tip strong {
   font-weight: 500;
-  color: #72819b;
+  color: var(--muted);
 }
 .page-footer {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   padding: 27px 0 22px;
-  color: #a3adbc;
-  font-size: 9px;
+  color: var(--muted);
+  font-size: 0.75rem;
   letter-spacing: 0.1px;
 }
 .footer-divider {
   padding: 0 7px;
-  color: #c4cbd6;
+  color: var(--muted);
 }
 .footer-dot {
   display: inline-block;
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9db4df;
+  background: var(--color-primitive-blue-300);
   margin-left: 9px;
   vertical-align: middle;
 }
@@ -841,11 +868,11 @@ button:not(.MuiButtonBase-root) {
   display: none;
 }
 .small {
-  font-size: 10px;
+  font-size: 0.875rem;
 }
 .muted {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 1rem;
 }
 .list-layout {
   grid-template-columns: 1fr;
@@ -881,14 +908,14 @@ button:not(.MuiButtonBase-root) {
 }
 .empty-state > svg {
   font-size: 42px;
-  color: #8ca8dc;
+  color: var(--blue);
 }
 .empty-state h2 {
-  font-size: 17px;
+  font-size: 1.0625rem;
   font-weight: 500;
 }
 .empty-state p {
-  font-size: 12px;
+  font-size: 1rem;
   color: var(--muted);
   margin-bottom: 24px;
 }
@@ -898,7 +925,7 @@ button:not(.MuiButtonBase-root) {
   align-items: center;
 }
 .upload-drop {
-  border: 1px dashed #b7c9eb;
+  border: 1px dashed var(--control-border);
   border-radius: 9px;
   background: var(--bg);
   padding: 22px;
@@ -907,15 +934,15 @@ button:not(.MuiButtonBase-root) {
   align-items: center;
   gap: 8px;
   margin: 20px 0 28px;
-  font-size: 12px;
+  font-size: 1rem;
 }
 .upload-drop > svg {
   font-size: 32px;
-  color: #7797d6;
+  color: var(--blue);
 }
 .upload-drop small {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 0.875rem;
 }
 .form-fields {
   display: flex;
@@ -936,7 +963,7 @@ button:not(.MuiButtonBase-root) {
   gap: 9px;
   background: transparent;
   color: var(--blue);
-  font-size: 12px;
+  font-size: 1rem;
   padding: 0;
   margin-bottom: 30px;
 }
@@ -947,7 +974,7 @@ button:not(.MuiButtonBase-root) {
   margin-bottom: 30px;
 }
 .detail-heading h1 {
-  font-size: 27px;
+  font-size: 1.6875rem;
   margin: 12px 0 18px;
   overflow-wrap: anywhere;
 }
@@ -956,11 +983,11 @@ button:not(.MuiButtonBase-root) {
   align-items: center;
   gap: 12px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 0.875rem;
   flex-wrap: wrap;
 }
 .detail-meta .MuiChip-root {
-  font-size: 10px;
+  font-size: 0.875rem;
 }
 .document-panel {
   background: var(--paper);
@@ -976,22 +1003,22 @@ button:not(.MuiButtonBase-root) {
   gap: 10px;
   padding: 14px 22px;
   border-bottom: 1px solid var(--border);
-  font-size: 12px;
+  font-size: 1rem;
   flex-wrap: wrap;
 }
 .document-toolbar .MuiToggleButton-root {
   gap: 8px;
-  font-size: 11px;
+  font-size: 0.875rem;
   padding: 6px 12px;
   text-transform: none;
 }
 .document-toolbar .MuiButton-root {
-  font-size: 11px;
+  font-size: 0.875rem;
 }
 .markdown {
   padding: 28px 40px 50px;
   line-height: 1.95;
-  font-size: 14px;
+  font-size: 1rem;
   overflow-wrap: anywhere;
 }
 .markdown h1,
@@ -1002,13 +1029,13 @@ button:not(.MuiButtonBase-root) {
   margin: 24px 0 18px;
 }
 .markdown h1 {
-  font-size: 28px;
+  font-size: 1.75rem;
 }
 .markdown h2 {
-  font-size: 21px;
+  font-size: 1.3125rem;
 }
 .markdown h3 {
-  font-size: 17px;
+  font-size: 1.0625rem;
 }
 .markdown a {
   color: var(--blue);
@@ -1019,7 +1046,7 @@ button:not(.MuiButtonBase-root) {
   padding: 22px;
   border-radius: 7px;
   overflow: auto;
-  font-size: 13px;
+  font-size: 1rem;
   line-height: 1.8;
   font-family: monospace;
 }
@@ -1029,7 +1056,7 @@ button:not(.MuiButtonBase-root) {
   border-radius: 4px;
 }
 .markdown blockquote {
-  border-left: 3px solid #7997d8;
+  border-left: 3px solid var(--blue);
   margin-left: 0;
   padding-left: 20px;
   color: var(--muted);
@@ -1061,8 +1088,8 @@ button:not(.MuiButtonBase-root) {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
-  color: #7890b4;
+  font-size: 1rem;
+  color: var(--blue);
   background: var(--blue-light);
   padding: 16px 20px;
   border-radius: 7px;
@@ -1070,7 +1097,7 @@ button:not(.MuiButtonBase-root) {
 }
 .viewer-drop {
   min-height: 380px;
-  border: 2px dashed #cbd7ed;
+  border: 2px dashed var(--control-border);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1081,7 +1108,7 @@ button:not(.MuiButtonBase-root) {
   padding: 30px;
 }
 .upload-icon {
-  color: #6c90d4;
+  color: var(--blue);
   background: var(--blue-light);
   border-radius: 15px;
   padding: 20px;
@@ -1092,58 +1119,18 @@ button:not(.MuiButtonBase-root) {
   font-size: 36px;
 }
 .viewer-drop h2 {
-  font-size: 20px;
+  font-size: 1.25rem;
   margin-top: 24px;
 }
 .viewer-drop p {
-  font-size: 12px;
+  font-size: 1rem;
   color: var(--muted);
   margin: 0 0 23px;
 }
 .viewer-drop small {
-  font-size: 10px;
+  font-size: 0.875rem;
   color: var(--muted);
   margin-top: 18px;
-}
-[data-theme='dark'] {
-  --bg: #111827;
-  --paper: #1c2636;
-  --text: #e0e6f2;
-  --muted: #92a0b6;
-  --border: #2b374a;
-  --blue: #91b0ff;
-  --blue-light: #273856;
-  --banner: #202f4a;
-}
-[data-theme='dark'] .banner-text h2 {
-  color: #c5d7ff;
-}
-[data-theme='dark'] .welcome-banner {
-  border-color: #304360;
-}
-[data-theme='dark'] .orbit {
-  border-color: #304360;
-}
-[data-theme='dark'] .heading-count,
-[data-theme='dark'] .avatar {
-  background: #2b3b56;
-  color: #a5b9df;
-}
-[data-theme='dark'] .breadcrumb strong {
-  color: #bfcbdf;
-}
-[data-theme='dark'] .sidebar-tags > button,
-[data-theme='dark'] .nav-item {
-  color: #a3b1c7;
-}
-[data-theme='dark'] .nav-item.active {
-  color: #a9c2ff;
-}
-[data-theme='dark'] .tip-icon {
-  background: #273856;
-}
-[data-theme='dark'] .paper-check {
-  border-color: #202f4a;
 }
 @media (min-width: 1550px) {
   .page-content {
@@ -1153,10 +1140,10 @@ button:not(.MuiButtonBase-root) {
     gap: 23px;
   }
   .card-content h3 {
-    font-size: 15px;
+    font-size: 1.125rem;
   }
   .card-content p {
-    font-size: 12px;
+    font-size: 1rem;
   }
   .doc-card {
     min-height: 257px;
@@ -1165,7 +1152,7 @@ button:not(.MuiButtonBase-root) {
     margin-top: 20px;
   }
   .welcome-banner {
-    height: 235px;
+    min-height: 235px;
   }
 }
 @media (max-width: 1200px) {
@@ -1188,7 +1175,7 @@ button:not(.MuiButtonBase-root) {
     margin-right: -20px;
   }
   .banner-text h2 {
-    font-size: 17px;
+    font-size: 1.0625rem;
   }
   .filters {
     flex-wrap: wrap;
@@ -1212,7 +1199,7 @@ button:not(.MuiButtonBase-root) {
     margin: 0 14px;
   }
   .card-content h3 {
-    font-size: 12px;
+    font-size: 1.125rem;
   }
   .list-layout .doc-card {
     grid-template-columns: 100px 1fr 140px;
@@ -1237,10 +1224,10 @@ button:not(.MuiButtonBase-root) {
     transform-origin: center;
   }
   .banner-text h2 {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
   .banner-text p {
-    font-size: 10px;
+    font-size: 1rem;
   }
   .filter-right {
     width: 100%;
@@ -1249,7 +1236,7 @@ button:not(.MuiButtonBase-root) {
     flex: 1;
   }
   .page-heading h1 {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
   .page-heading {
     align-items: flex-start;
@@ -1271,7 +1258,7 @@ button:not(.MuiButtonBase-root) {
     grid-column: 2;
   }
   .page-footer {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .page-footer > span:last-child {
     display: none;
@@ -1280,7 +1267,7 @@ button:not(.MuiButtonBase-root) {
     margin-left: -20px;
   }
   .library-tip p {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
 }
 @media (max-width: 700px) {
@@ -1295,7 +1282,7 @@ button:not(.MuiButtonBase-root) {
   .sidebar-backdrop {
     position: fixed;
     inset: 0;
-    background: #0d1c3d55;
+    background: var(--color-neutral-opacity-gray-400);
     z-index: 19;
   }
   .main {
@@ -1311,13 +1298,13 @@ button:not(.MuiButtonBase-root) {
   }
   .breadcrumb {
     gap: 6px;
-    font-size: 10px;
+    font-size: 0.875rem;
   }
   .topbar-right {
     gap: 10px;
   }
   .local-badge {
-    font-size: 8px;
+    font-size: 0.75rem;
     padding: 5px 7px;
   }
   .page-content {
@@ -1329,16 +1316,16 @@ button:not(.MuiButtonBase-root) {
     margin-bottom: 24px;
   }
   .page-heading h1 {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
   .page-heading p {
-    font-size: 10px;
+    font-size: 1rem;
   }
   .upload-button.MuiButton-root {
     margin: 0;
   }
   .welcome-banner {
-    height: 200px;
+    min-height: 200px;
     padding: 23px;
   }
   .banner-text {
@@ -1346,7 +1333,7 @@ button:not(.MuiButtonBase-root) {
     z-index: 1;
   }
   .banner-text h2 {
-    font-size: 16px;
+    font-size: 1rem;
     max-width: 220px;
   }
   .banner-art {
@@ -1356,10 +1343,10 @@ button:not(.MuiButtonBase-root) {
     transform: scale(0.85);
   }
   .banner-text p {
-    font-size: 10px;
+    font-size: 1rem;
   }
   .banner-label {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .library-tools {
     margin-top: 24px;
@@ -1373,7 +1360,7 @@ button:not(.MuiButtonBase-root) {
   }
   .filter-right > .MuiInputBase-root {
     min-width: 0;
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .filter-right .MuiSelect-select {
     padding-left: 9px;
@@ -1384,6 +1371,7 @@ button:not(.MuiButtonBase-root) {
   }
   .card-top {
     margin: 14px 12px 0;
+    flex-wrap: wrap;
     gap: 6px;
   }
   .document-icon {
@@ -1391,7 +1379,7 @@ button:not(.MuiButtonBase-root) {
     height: 32px;
   }
   .file-type {
-    font-size: 6px;
+    font-size: 0.75rem;
     letter-spacing: 0.8px;
   }
   .card-top .MuiIconButton-root {
@@ -1401,16 +1389,16 @@ button:not(.MuiButtonBase-root) {
     padding: 13px 12px 0;
   }
   .card-content h3 {
-    font-size: 12px;
+    font-size: 1.125rem;
     white-space: normal;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    height: 40px;
+    height: 3.4em;
     overflow: hidden;
   }
   .card-content p {
-    font-size: 9px;
+    font-size: 1rem;
     line-height: 1.8;
     min-height: 33px;
   }
@@ -1419,16 +1407,17 @@ button:not(.MuiButtonBase-root) {
     gap: 4px;
   }
   .tag-pill {
-    font-size: 8px;
+    font-size: 0.75rem;
     padding: 2px 5px;
   }
   .card-footer {
+    flex-wrap: wrap;
     margin: 0 12px;
-    font-size: 8px;
+    font-size: 0.75rem;
     gap: 3px;
   }
   .document-id {
-    font-size: 7px;
+    font-size: 0.75rem;
     letter-spacing: 0;
   }
   .card-footer svg {
@@ -1441,26 +1430,26 @@ button:not(.MuiButtonBase-root) {
     padding: 11px;
   }
   .library-tip p {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .page-footer {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .form-row {
     flex-direction: column;
   }
   .markdown {
     padding: 15px 23px 35px;
-    font-size: 13px;
+    font-size: 1rem;
   }
   .document-toolbar {
     padding: 12px;
   }
   .detail-heading h1 {
-    font-size: 22px;
+    font-size: 1.375rem;
   }
   .detail-meta {
-    font-size: 10px;
+    font-size: 0.875rem;
   }
   .list-layout .card-content h3 {
     height: auto;

@@ -110,10 +110,17 @@ function App() {
       createTheme({
         palette: {
           mode: dark ? 'dark' : 'light',
-          primary: { main: dark ? '#91b0ff' : '#315bc5' },
+          // MUIは色の濃淡を計算するため、公式トークンに対応するHEX値を渡す。
+          primary: {
+            main: dark ? '#c5d7fb' : '#0017c1',
+            contrastText: dark ? '#1a1a1a' : '#ffffff',
+          },
+          text: { primary: dark ? '#ffffff' : '#1a1a1a', secondary: dark ? '#e6e6e6' : '#4d4d4d' },
+          error: { main: dark ? '#ffbbbb' : '#ce0000' },
+          success: { main: dark ? '#9bd4b5' : '#115a36' },
           background: {
-            default: dark ? '#111827' : '#f7f9fc',
-            paper: dark ? '#1c2636' : '#ffffff',
+            default: dark ? '#1a1a1a' : '#f2f2f2',
+            paper: dark ? '#333333' : '#ffffff',
           },
         },
         typography: {
@@ -123,6 +130,12 @@ function App() {
         shape: { borderRadius: 8 },
         components: {
           MuiButton: { defaultProps: { disableElevation: true } },
+          MuiInputBase: {
+            styleOverrides: { input: { '&::placeholder': { color: 'var(--muted)', opacity: 1 } } },
+          },
+          MuiOutlinedInput: {
+            styleOverrides: { notchedOutline: { borderColor: 'var(--control-border)' } },
+          },
           MuiTextField: { defaultProps: { size: 'small' } },
         },
       }),
