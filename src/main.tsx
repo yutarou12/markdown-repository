@@ -46,10 +46,10 @@ import LocalOfferOutlined from '@mui/icons-material/LocalOfferOutlined';
 import EastRounded from '@mui/icons-material/EastRounded';
 import FolderOpenRounded from '@mui/icons-material/FolderOpenRounded';
 import VisibilityOutlined from '@mui/icons-material/VisibilityOutlined';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import type { DocumentRecord } from '../server/store';
 import './styles.css';
+
+const MarkdownPreview = React.lazy(() => import('./MarkdownPreview'));
 
 type Page = 'library' | 'favorites' | 'viewer';
 const tagColors = ['blue', 'green', 'purple', 'orange'];
@@ -306,9 +306,9 @@ function App() {
     code ? (
       <pre className="source-code">{text}</pre>
     ) : (
-      <article className="markdown">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>
-      </article>
+      <React.Suspense fallback={<LinearProgress aria-label="プレビューを読み込み中" />}>
+        <MarkdownPreview text={text} />
+      </React.Suspense>
     );
   return (
     <ThemeProvider theme={theme}>
