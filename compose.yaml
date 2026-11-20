@@ -1,0 +1,26 @@
+services:
+  markshelf:
+    build: .
+    init: true
+    restart: unless-stopped
+    ports:
+      - '${BIND_ADDRESS:-127.0.0.1}:${APP_PORT:-8080}:3001'
+    environment:
+      API_PORT: 3001
+      DATA_DIR: /app/data
+      TZ: Asia/Tokyo
+    volumes:
+      - markshelf-data:/app/data
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:3001/api/documents').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  markshelf-data:
