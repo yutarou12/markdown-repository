@@ -1050,6 +1050,36 @@ button:not(.MuiButtonBase-root) {
   line-height: 1.8;
   font-family: monospace;
 }
+/* コードの意味ごとに両テーマの既存パレットを使う。 */
+.markdown .hljs-keyword,
+.markdown .hljs-selector-tag,
+.markdown .hljs-meta {
+  color: var(--purple);
+}
+.markdown .hljs-title,
+.markdown .hljs-name,
+.markdown .hljs-built_in,
+.markdown .hljs-type,
+.markdown .hljs-section {
+  color: var(--blue);
+}
+.markdown .hljs-string,
+.markdown .hljs-regexp,
+.markdown .hljs-addition {
+  color: var(--green);
+}
+.markdown .hljs-attr,
+.markdown .hljs-attribute,
+.markdown .hljs-number,
+.markdown .hljs-literal,
+.markdown .hljs-deletion {
+  color: var(--orange);
+}
+.markdown .hljs-comment,
+.markdown .hljs-quote {
+  color: var(--muted);
+  font-style: italic;
+}
 .markdown :not(pre) > code {
   background: var(--blue-light);
   padding: 2px 5px;
